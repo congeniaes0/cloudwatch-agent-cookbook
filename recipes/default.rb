@@ -24,5 +24,5 @@ end
 
 bash 'install_awslogs-agent' do
   action :nothing
-  code "python /root/awslogs-agent-setup.py --non-interactive --region=#{node[:congenia_common][:aws_region]} --configfile=/etc/awslogs.conf"
+  code "python /root/awslogs-agent-setup.py --non-interactive --region=eu-west-1 --configfile=/etc/awslogs.conf"
 end
