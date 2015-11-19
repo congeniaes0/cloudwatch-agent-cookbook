@@ -1,0 +1,11 @@
+[general]
+state_file = /var/awslogs/state/agent-state
+<% node[:congenia_common][:cloudwatch][:logs].each do |log_item| -%>
+
+[<%= log_item[:log_location] %>]
+file = <%= log_item[:log_location] %>
+log_group_name = <%= log_item[:log_group_name] %>
+log_stream_name = <%= log_item[:log_stream_name] %>
+initial_position = start_of_file
+datetime_format = <%= log_item[:datetime_format] %>
+<% end -%>
