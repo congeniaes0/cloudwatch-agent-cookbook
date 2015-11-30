@@ -18,7 +18,7 @@ end
 if node[:opsworks][:layers].has_key?("php-app")
   node[:deploy].keys.each do |app|
     app_name = app['name']
-    ["#{app}-access.log", "#{app}-error.log"].each do |logfile|
+    ["#{app}-access.log", "#{app}-ssl-access.log", "#{app}-error.log"].each do |logfile|
       logs << {:log_location => "/var/log/apache2/#{logfile}", :log_group_name => node[:opsworks][:stack][:name], :log_stream_name => logfile, :datetime_format => "%b %d %H:%M:%S %Y"}
     end
   end
