@@ -15,13 +15,13 @@ if node[:congenia_common][:cloudwatch] and node[:congenia_common][:cloudwatch][:
 end
 
 #logs = node[:congenia_common][:cloudwatch][:logs].clone
-#if node[:opsworks][:layers].has_key?("php-app")
+if node[:opsworks][:layers].has_key?("php-app")
   node[:deploy].each do |app|
     ["#{app}-access.log", "#{app}-error.log"].each do |logfile|
       logs << {"log_location" => "/var/log/apache2/#{logfile}", "log_group_name" => node[:opsworks][:stack][:name], "log_stream_name" => logfile, "datetime_format" => "%b %d %H:%M:%S %Y"}
     end
   end
-#end
+end
 
 template "/etc/awslogs.conf" do
   source "awslogs.conf.erb"

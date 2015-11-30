@@ -1,6 +1,6 @@
 [general]
 state_file = /var/awslogs/state/agent-state
-<% node[:congenia_common][:cloudwatch][:logs].each do |log_item| -%>
+<% @logs.each do |log_item| -%>
 
 [<%= log_item[:log_location] %>]
 file = <%= log_item[:log_location] %>
