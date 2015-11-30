@@ -11,7 +11,7 @@ logs = node[:congenia_common][:cloudwatch][:logs]
 if node['opsworks']['layers']['php-app']
   node['deploy'].each do |app|
     ["#{app}-access.log", "#{app}-error.log"].each do |logfile|
-      logs << {"log_location" => "/var/log/apache2/#{logfile}", "log_group_name" => node['opsworks']['stack']['name'], "log_stream_name" => logfile, "datetime_format" => "%b %d %H:%M:%S %Y"},
+      logs << {"log_location" => "/var/log/apache2/#{logfile}", "log_group_name" => node['opsworks']['stack']['name'], "log_stream_name" => logfile, "datetime_format" => "%b %d %H:%M:%S %Y"}
     end
   end
 end
