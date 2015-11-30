@@ -7,7 +7,7 @@
 # both the template and the setup script download call the installation procedure because there might be changes
 # in the logs configuration when the agent is already installed; the bash resource will only be called once anyway
 
-logs = node[:congenia_common][:cloudwatch][:logs]
+logs = node[:congenia_common][:cloudwatch][:logs].clone
 if node['opsworks']['layers']['php-app']
   node['deploy'].each do |app|
     ["#{app}-access.log", "#{app}-error.log"].each do |logfile|
