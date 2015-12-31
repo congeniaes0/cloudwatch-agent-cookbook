@@ -15,7 +15,7 @@ if node[:congenia_common][:cloudwatch] and node[:congenia_common][:cloudwatch][:
 end
 
 #logs = node[:congenia_common][:cloudwatch][:logs].clone
-if node[:opsworks][:layers].has_key?("php-app")
+if node[:opsworks] and node[:opsworks][:layers].has_key?("php-app")
   node[:deploy].keys.each do |app|
     app_name = app['name']
     ["#{app}-access.log", "#{app}-ssl-access.log", "#{app}-error.log"].each do |logfile|
